@@ -4,10 +4,11 @@ import com.google.gson.Gson;
 import spark.ResponseTransformer;
 
 public class JsonResponse implements ResponseTransformer {
-    private Gson gson = new Gson();
+
 
     @Override
     public String render(Object model) {
+        Gson gson = new Gson();
         return gson.toJson(model);
     }
 }
