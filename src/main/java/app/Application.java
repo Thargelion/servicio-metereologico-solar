@@ -8,12 +8,14 @@ import app.clima.ClimaController;
 import app.home.HomeController;
 import utils.Paths;
 
+import java.util.Optional;
+
 
 public class Application {
 
     public static void main(String[] args) {
         // Configure Spark
-        port(Integer.parseInt(System.getProperty("PORT", "4567")));
+        port(Optional.ofNullable(System.getenv("PORT")).map(Integer::valueOf).orElse(4567));
         staticFiles.expireTime(600L);
         get("/", HomeController.index);
         get(Paths.Api.CLIMA, ClimaController.getWeather);
