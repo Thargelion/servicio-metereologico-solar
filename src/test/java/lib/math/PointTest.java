@@ -1,0 +1,18 @@
+package lib.math;
+
+import org.junit.jupiter.api.Test;
+import java.util.Arrays;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import lib.Point;
+
+class PointTest {
+
+    @Test()
+    void RotateRotatesPoint() {
+        Point punto = new Point(0.0, 2000.0);
+        punto.Rotate(720);
+        assertEquals(Arrays.toString(punto.getVectorArray()), Arrays.toString(new double[]{0.0, 2000.0}));
+    }
+
+}
