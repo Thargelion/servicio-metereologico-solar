@@ -1,6 +1,5 @@
 package app.clima;
 
-import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 import spark.Request;
 import spark.Response;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.stream.Collectors;
 

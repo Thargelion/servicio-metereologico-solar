@@ -43,7 +43,7 @@ hs_err_pid*
 
 # Gradle
 .idea/**/gradle.xml
-
+*.iml
 # CMake
 cmake-build-debug/
 cmake-build-release/
@@ -76,3 +76,5 @@ fabric.properties
 .idea/httpRequests
 
 target
+src/main/java/services/
+src/main/resources/
