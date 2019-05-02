@@ -18,12 +18,12 @@ public class Point implements Movimiento {
     }
 
     @Override
-    public void Rotacion(double degrees, double distance) {
+    public void Rotacion(double degrees) {
         degrees = Math.toRadians(degrees);
-        // coordX = round(distance * Math.cos(degrees));
-        // coordY = round(distance * Math.sin(degrees));
-        coordX = round((coordX * Math.cos(degrees) - coordY * Math.sin(degrees)));
-        coordY = round((coordY * Math.cos(degrees) + coordX * Math.sin(degrees)));
+        double coordXPrima = round((coordX * Math.cos(degrees)) - (coordY * Math.sin(degrees)));
+        double coordYPrima = round((coordY * Math.cos(degrees)) + (coordX * Math.sin(degrees)));
+        coordX = coordXPrima;
+        coordY = coordYPrima;
     }
 
     public double[] getVectorArray() {
