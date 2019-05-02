@@ -13,4 +13,4 @@ FROM openjdk:8-jre-alpine
 WORKDIR /app
 COPY --from=build /pronosticos/target/pronosticos-1.0-SNAPSHOT.jar /app
 EXPOSE 4567
-CMD ["java", "-jar", "pronosticos-1.0-SNAPSHOT.jar"]
+CMD ["java", "-Dport=4567", "-jar", "pronosticos-1.0-SNAPSHOT.jar"]

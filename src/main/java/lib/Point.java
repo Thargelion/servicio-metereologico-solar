@@ -1,10 +1,10 @@
 package lib;
 
-import lib.math.geometry.Rotacion;
+import lib.math.geometry.Movimiento;
 
 import static java.lang.Math.round;
 
-public class Point implements Rotacion {
+public class Point implements Movimiento {
 
     private double coordX;
     private double coordY;
@@ -18,10 +18,10 @@ public class Point implements Rotacion {
     }
 
     @Override
-    public void Rotate(double degrees) {
+    public void Traslacion(double degrees, double distance) {
         degrees = Math.toRadians(degrees);
-        coordX = round(coordX * Math.cos(degrees) - coordY * Math.sin(degrees));
-        coordY = round(coordX * Math.sin(degrees) + coordY * Math.cos(degrees));
+        coordX = round(distance * Math.cos(degrees));
+        coordY = round(distance * Math.sin(degrees));
     }
 
     public double[] getVectorArray() {

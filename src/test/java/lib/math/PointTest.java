@@ -11,7 +11,7 @@ class PointTest {
     @Test()
     void RotateRotatesPoint() {
         Point punto = new Point(0.0, 2000.0);
-        punto.Rotate(720);
+        punto.Traslacion(360, 2000.0);
         assertEquals(Arrays.toString(punto.getVectorArray()), Arrays.toString(new double[]{0.0, 2000.0}));
     }
 
