@@ -1,11 +1,10 @@
 package lib.math.utils;
 
-import app.utils.MathUtilsEnum;
+import app.enums.MathUtilsEnum;
 import org.apache.commons.math3.analysis.function.Abs;
 import org.apache.commons.math3.geometry.euclidean.twod.Vector2D;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.SingularValueDecomposition;
-import org.apache.commons.math3.util.MathArrays;
 
 public class Trigonometry {
 

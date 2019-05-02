@@ -1,4 +1,4 @@
-package app.utils;
+package app;
 
 public class Paths {
     public static class Api {

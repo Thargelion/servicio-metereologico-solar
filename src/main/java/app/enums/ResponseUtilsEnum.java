@@ -1,4 +1,4 @@
-package app.utils;
+package app.enums;
 
 import com.google.gson.Gson;
 

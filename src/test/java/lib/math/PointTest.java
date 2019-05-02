@@ -1,10 +1,9 @@
 package lib.math;
 
+import lib.math.geometry.Point;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import lib.Point;
 
 class PointTest {
 

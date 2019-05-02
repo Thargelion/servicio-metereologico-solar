@@ -6,9 +6,6 @@ import static spark.Spark.*;
 
 import app.clima.ClimaController;
 import app.home.HomeController;
-import app.utils.MathUtilsEnum;
-import app.utils.Paths;
-import org.apache.commons.math3.analysis.function.Abs;
 
 
 public class Application {

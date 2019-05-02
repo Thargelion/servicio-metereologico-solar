@@ -10,4 +10,20 @@ public class Clima {
         this.dia = dia;
         this.clima = clima;
     }
+
+    public Integer getDia() {
+        return dia;
+    }
+
+    public void setDia(Integer dia) {
+        this.dia = dia;
+    }
+
+    public String getClima() {
+        return clima;
+    }
+
+    public void setClima(String clima) {
+        this.clima = clima;
+    }
 }

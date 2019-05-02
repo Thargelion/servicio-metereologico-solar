@@ -42,7 +42,7 @@ class ClimaControllerTest extends TestBase {
         Clima clima = new Clima(1, "lluvia");
         String expectedResponse = "{\"dia\":1,\"clima\":\"lluvia\"}";
         ClimaDao climaDao = mock(ClimaDao.class);
-        when(climaDao.read(anyString())).thenReturn(clima);
+        when(climaDao.read(anyInt())).thenReturn(clima);
         when(request.params(anyString())).thenReturn("1");
         String actualResponse = readRequest(con);
         assertEquals(expectedResponse, actualResponse);

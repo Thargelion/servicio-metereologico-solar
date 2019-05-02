@@ -1,6 +1,6 @@
 package lib.transformers;
 
-import app.utils.ResponseUtilsEnum;
+import app.enums.ResponseUtilsEnum;
 import com.google.gson.Gson;
 import spark.ResponseTransformer;
 

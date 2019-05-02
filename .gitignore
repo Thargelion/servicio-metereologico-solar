@@ -76,5 +76,4 @@ fabric.properties
 .idea/httpRequests
 
 target
-src/main/java/services/
 src/main/resources/

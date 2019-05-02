@@ -1,4 +1,4 @@
-package lib;
+package lib.math.geometry;
 
 import lib.math.geometry.Movimiento;
 
