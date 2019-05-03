@@ -10,6 +10,10 @@ ENV MONGO_PASSWORD ${MONGO_PASSWORD}
 MAINTAINER Maximiliano De Pietro <maximiliano.depietro@gmail.com>
 WORKDIR /pronosticos
 ADD pom.xml /pronosticos/pom.xml
+RUN echo $MONGO_SRV
+RUN echo $MONGO_USER
+RUN echo $MONGO_PASSWORD
+RUN echo $MONGO_DATABASE
 RUN ["mvn", "verify", "clean"]
 ADD src /pronosticos/src
 RUN ["mvn", "package"]
