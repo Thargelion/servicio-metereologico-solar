@@ -77,3 +77,4 @@ fabric.properties
 
 target
 src/main/resources/
+variables.docker

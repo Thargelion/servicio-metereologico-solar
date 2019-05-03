@@ -14,8 +14,8 @@ public class ClimaDao  {
     MongoDatabase mongoDatabase = DatabaseEnum.instance.mongoDatabase();
     MongoCollection<Clima> mongoCollection;
 
-    public ClimaDao(CrudService crudService) {
-        mongoCollection = mongoDatabase.getCollection("clima", Clima.class); // parametrizar
+    public ClimaDao() {
+        mongoCollection = mongoDatabase.getCollection("clima", Clima.class);
     }
 
     Clima read(Integer id) {
@@ -27,7 +27,7 @@ public class ClimaDao  {
         if (climaOld == null) {
             mongoCollection.insertOne(clima);
         } else {
-            mongoCollection.replaceOne(filtro, clima);
+            mongoCollection.replaceOne(filtro, clima); // Todo, testear que el replace no alcance para los dos
         }
     }
 

@@ -1,5 +1,6 @@
 package lib;
 
+import app.config.SettingsEnum;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -20,10 +21,10 @@ public class MongoConnect {
                 fromProviders(PojoCodecProvider.builder().automatic(true).build())
         );
         ConnectionString connectionString = new ConnectionString(
-                String.format(
-                        "mongodb+srv://%s:%s@cluster0-uwcs4.mongodb.net/test?retryWrites=true",
-                        "spock",
-                        "NSaHRQpoojcFIDqj"
+                String.format("mongodb+srv://%s:%s@%s/test?retryWrites=true",
+                        SettingsEnum.MONGO_USER.variable,
+                        SettingsEnum.MONGO_PASSWORD.variable,
+                        SettingsEnum.MONGO_SRV.variable
                 )
         );
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()

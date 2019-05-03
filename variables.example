@@ -1,0 +1,4 @@
+MONGO_DATABASE=vulcano
+MONGO_USER=spock
+MONGO_SRV=cluster0-uwcs4.mongodb.net
+MONGO_PASSWORD=NSaHRQpoojcFIDqj

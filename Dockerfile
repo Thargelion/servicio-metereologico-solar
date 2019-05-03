@@ -1,14 +1,18 @@
 FROM maven:3.5.2-jdk-8-alpine as build
+ARG MONGO_DATABASE
+ARG MONGO_USER
+ARG MONGO_SRV
+ARG MONGO_PASSWORD
+ENV MONGO_DATABASE ${MONGO_DATABASE}
+ENV MONGO_USER ${MONGO_USER}
+ENV MONGO_SRV ${MONGO_SRV}
+ENV MONGO_PASSWORD ${MONGO_PASSWORD}
 MAINTAINER Maximiliano De Pietro <maximiliano.depietro@gmail.com>
 WORKDIR /pronosticos
 ADD pom.xml /pronosticos/pom.xml
-RUN ["mvn", "dependency:resolve"]
-RUN ["mvn", "verify"]
+RUN ["mvn", "verify", "clean"]
 ADD src /pronosticos/src
-RUN ["mvn", "install"]
 RUN ["mvn", "package"]
-RUN ["ls", "/pronosticos/target"]
-
 FROM openjdk:8-jre-alpine
 WORKDIR /app
 COPY --from=build /pronosticos/target/pronosticos-1.0-SNAPSHOT.jar /app

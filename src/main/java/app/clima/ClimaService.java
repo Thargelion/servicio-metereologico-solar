@@ -7,8 +7,6 @@ import java.util.List;
 
 public class ClimaService implements CrudService<Clima> {
 
-
-    // Recibo el servicio donde guardo y en base a eso almaceno
     private ClimaDao climaDao = DaoEnum.instance.getClimaDao();
 
     @Override
