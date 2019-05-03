@@ -6,6 +6,11 @@ services:
 branches:
   only:
     - master
+env:
+  - MONGO_DATABASE=vulcano
+  - MONGO_PASSWORD=NSaHRQpoojcFIDqj
+  - MONGO_SRV="cluster0-uwcs4.mongodb.net"
+  - MONGO_USER=spock
 deploy:
   provider: heroku
   api_key:
