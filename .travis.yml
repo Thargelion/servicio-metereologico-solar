@@ -6,8 +6,6 @@ services:
 branches:
   only:
   - master
-before_install:
-  - docker build -t pronostico-loco --build-arg MONGO_DATABASE=$MONGO_DATABASE --build-arg MONGO_USER=$MONGO_USER --build-arg MONGO_SRV=$MONGO_SRV --build-arg MONGO_PASSWORD=$MONGO_PASSWORD .
 deploy:
   provider: heroku
   api_key:
