@@ -27,4 +27,6 @@ Dockerfile
 .git
 .gitignore
 .idea
-
+variables.docker
+variables.example
+*.iml

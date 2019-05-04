@@ -1,4 +1,4 @@
-package app.utils;
+package app.enums;
 
 import org.apache.commons.math3.analysis.function.Abs;
 
