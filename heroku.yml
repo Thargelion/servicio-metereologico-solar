@@ -3,7 +3,7 @@ build:
     web: Dockerfile
   config:
     APP_ENV: production
-    MAMBU_DATABASE: <%= ENV["MONGO_DATABASE"] %>
-    MAMBU_USER: <%= ENV["MAMBU_USER"] %>
-    MAMBU_PASSWORD: <%= ENV["MAMBU_PASSWORD"] %>
-    MAMBU_SRV: <%= ENV["MAMBU_SRV"] %>
+    MAMBU_DATABASE: ${MONGO_DATABASE}
+    MAMBU_USER: ${MAMBU_USER}
+    MAMBU_PASSWORD: ${MAMBU_PASSWORD}
+    MAMBU_SRV: ${MAMBU_SRV}
