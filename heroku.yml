@@ -4,6 +4,6 @@ build:
   config:
     APP_ENV: production
     MONGO_DATABASE: vulcano
-    MONGO_USER: "< %= ENV['MONGO_USER'] %>"
-    MONGO_PASSWORD: $MONGO_PASSWORD
-    MONGO_SRV: "< %= ENV['MONGO_SRV'] %>"
+    MONGO_USER: spock
+    MONGO_PASSWORD: NSaHRQpoojcFIDqj
+    MONGO_SRV: cluster0-uwcs4.mongodb.net"
