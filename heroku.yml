@@ -6,3 +6,4 @@ build:
     MAMBU_DATABASE: <%= ENV["MONGO_DATABASE"] %>
     MAMBU_USER: <%= ENV["MAMBU_USER"] %>
     MAMBU_PASSWORD: <%= ENV["MAMBU_PASSWORD"] %>
+    MAMBU_SRV: <%= ENV["MAMBU_SRV"] %>
