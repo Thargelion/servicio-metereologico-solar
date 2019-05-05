@@ -1,7 +1,7 @@
 package app.clima;
 
-import app.services.CrudService;
 import app.enums.DatabaseEnum;
+import app.services.CrudService;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.conversions.Bson;
@@ -9,26 +9,27 @@ import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.eq;
 
 
-public class ClimaDao  {
+public class ClimaDao {
 
     MongoDatabase mongoDatabase = DatabaseEnum.instance.mongoDatabase();
     MongoCollection<Clima> mongoCollection;
 
-    public ClimaDao() {
-        mongoCollection = mongoDatabase.getCollection("clima", Clima.class);
+    public ClimaDao(CrudService crudService) {
+        mongoCollection = mongoDatabase.getCollection("clima", Clima.class); // parametrizar
     }
 
     Clima read(Integer id) {
         return new Clima(1, "lluvia");
     }
+
     void save(Clima clima) {
         Bson filtro = eq("dia", clima.getDia());
         Clima climaOld = mongoCollection.find(filtro).first();
         if (climaOld == null) {
             mongoCollection.insertOne(clima);
         } else {
-            mongoCollection.replaceOne(filtro, clima); // Todo, testear que el replace no alcance para los dos
+            mongoCollection.replaceOne(filtro, clima);
         }
     }
-
 }
+
