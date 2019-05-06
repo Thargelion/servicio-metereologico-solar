@@ -1,4 +1,4 @@
-package app.planetas;
+package app.planeta;
 
 public class Planeta {
     String nombre;

@@ -1,4 +1,4 @@
-package lib;
+package lib.mongo;
 
 import app.config.SettingsEnum;
 import com.mongodb.ConnectionString;

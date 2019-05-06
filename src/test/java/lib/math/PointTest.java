@@ -11,21 +11,21 @@ class PointTest {
     void angle360RotatesPointToSamePlace() {
         Point punto = new Point(0.0, 2000.0);
         punto.Rotacion(360);
-        assertEquals(Arrays.toString(new double[]{0.0, 2000.0}), Arrays.toString(punto.getVectorArray()));
+        assertEquals(Arrays.toString(new double[]{0.0, 2000.0}), Arrays.toString(punto.getCoords()));
     }
 
     @Test()
     void angle90RotateRotatesPointAQuarter() {
         Point punto = new Point(0.0, 2000.0);
         punto.Rotacion(90);
-        assertEquals(Arrays.toString(new double[]{-2000.0, 0.0}), Arrays.toString(punto.getVectorArray()));
+        assertEquals(Arrays.toString(new double[]{-2000.0, 0.0}), Arrays.toString(punto.getCoords()));
     }
 
     @Test()
     void angle180RotateRotatesPointAHalf() {
-        Point punto = new Point(0.0, 2000.0);
+        Point punto = new Point(0.0, 1000.0);
         punto.Rotacion(180);
-        assertEquals(Arrays.toString(new double[]{0, -2000.0}), Arrays.toString(punto.getVectorArray()));
+        assertEquals(Arrays.toString(new double[]{0, -1000.0}), Arrays.toString(punto.getCoords()));
     }
 
 }

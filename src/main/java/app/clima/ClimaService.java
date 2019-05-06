@@ -33,4 +33,8 @@ public class ClimaService implements CrudService<Clima> {
     public List<Clima> list() {
         return null;
     }
+
+    public static void generateClimas() {
+
+    }
 }

@@ -3,7 +3,7 @@ package app.enums;
 import app.config.SettingsEnum;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import lib.MongoConnect;
+import lib.mongo.MongoConnect;
 
 public enum DatabaseEnum {
     instance;

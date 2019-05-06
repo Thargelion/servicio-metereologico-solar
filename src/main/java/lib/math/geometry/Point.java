@@ -1,7 +1,5 @@
 package lib.math.geometry;
 
-import lib.math.geometry.Movimiento;
-
 import static java.lang.Math.round;
 
 public class Point implements Movimiento {
@@ -26,7 +24,15 @@ public class Point implements Movimiento {
         coordY = coordYPrima;
     }
 
-    public double[] getVectorArray() {
+    public double[] getCoords() {
         return new double[]{coordX, coordY};
+    }
+
+    public double getCoordX() {
+        return coordX;
+    }
+
+    public double getCoordY() {
+        return coordY;
     }
 }

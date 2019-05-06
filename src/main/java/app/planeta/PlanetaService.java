@@ -1,6 +1,5 @@
-package app.planetas;
+package app.planeta;
 
-import app.clima.ClimaDao;
 import app.enums.DaoEnum;
 import app.services.CrudService;
 
@@ -18,6 +17,10 @@ public class PlanetaService implements CrudService<Planeta> {
         return null;
     }
 
+    public Planeta read(String planetaName) {
+        return planetaDao.read(planetaName);
+    }
+
     @Override
     public void update(Planeta object) {
 
@@ -30,7 +33,7 @@ public class PlanetaService implements CrudService<Planeta> {
 
     @Override
     public List<Planeta> list() {
-        return null;
+        return planetaDao.list();
     }
 
     public void resetPlanets() {

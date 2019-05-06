@@ -12,4 +12,12 @@ public class Rest {
     public static String get(Object object, ResponseTransformer responseTransformer) throws Exception {
         return responseTransformer.render(object);
     }
+
+    public static String post(Object message, ResponseTransformer responseTransformer) throws Exception {
+        return responseTransformer.render(message);
+    }
+
+    public static String put(Object object, ResponseTransformer responseTransformer) throws Exception {
+        return responseTransformer.render(object);
+    }
 }

@@ -1,6 +1,5 @@
-package app.planetas;
+package app.planeta;
 
-import app.clima.Clima;
 import app.enums.DatabaseEnum;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -20,7 +19,7 @@ public class PlanetaDao {
     MongoCollection<Planeta> mongoCollection;
 
     public PlanetaDao() {
-        mongoCollection = mongoDatabase.getCollection("planeta", Planeta.class);
+        mongoCollection = mongoDatabase.getCollection("planetas", Planeta.class);
     }
 
     public List<Planeta> list() {

@@ -2,10 +2,10 @@ package api.types;
 
 import spark.ResponseTransformer;
 
-public enum ResponseTypesEnum {
+public enum TypesEnum {
     JSON(new JsonResponse());
     ResponseTransformer responseTransformer;
-    ResponseTypesEnum(ResponseTransformer type) {
+    TypesEnum(ResponseTransformer type) {
         responseTransformer = type;
     }
 

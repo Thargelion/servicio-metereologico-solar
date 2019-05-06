@@ -1,4 +1,4 @@
-package app.home;
+package api.controllers;
 
 import spark.Request;
 import spark.Response;

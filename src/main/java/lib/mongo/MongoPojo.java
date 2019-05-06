@@ -1,4 +1,6 @@
 package lib.mongo;
 
-public class MongoDao {
+public interface MongoPojo {
+    Integer getIdentifierValue();
+    String getIdentifierName();
 }

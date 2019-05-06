@@ -1,16 +1,19 @@
 package app.enums;
 
 import app.clima.ClimaService;
-import app.planetas.PlanetaService;
+import app.planeta.PlanetaService;
+import app.services.CrudService;
 
-public enum ServiceEnum {
-    instance;
-    ClimaService climaService = new ClimaService();
-    PlanetaService planetaService = new PlanetaService();
-    public ClimaService getClimaService() {
-        return climaService;
+public enum CrudServiceEnum {
+    CLIMA_SERVICE(new ClimaService()),
+    PLANETA_SERVICE(new PlanetaService());
+    private CrudService crudService;
+
+    CrudServiceEnum(CrudService crudService) {
+        this.crudService = crudService;
     }
-    public PlanetaService getPlanetaService() {
-        return planetaService;
+
+    public CrudService getCrudService() {
+        return crudService;
     }
 }
