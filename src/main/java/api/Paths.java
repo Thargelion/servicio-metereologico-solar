@@ -8,5 +8,6 @@ public class Paths {
         public static final String PLANETA_ID = "/planeta/:id";
         public static final String RESET = "/reset";
         public static final String PRONOSTICO = "/pronostico/:dias";
+        public static final String ANALISIS = "/analisis";
     }
 }

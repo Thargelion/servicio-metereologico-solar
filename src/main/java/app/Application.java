@@ -8,8 +8,10 @@ import api.Paths;
 import api.controllers.*;
 import api.responses.GenericErrorResponse;
 import api.types.TypesEnum;
+import app.analisis.AnalisisService;
 import app.enums.CrudServiceEnum;
 import app.enums.DatabaseEnum;
+import app.enums.ToolsEnum;
 import app.planeta.PlanetaService;
 import lib.redis.RedisConnect;
 
@@ -34,6 +36,7 @@ public class Application {
         // Herramientas
         get(Paths.Api.RESET, ResetController.resetPlanets(new PlanetaService()));
         get(Paths.Api.PRONOSTICO, PronosticoController.get());
+        get(Paths.Api.ANALISIS, AnalisisController.get(ToolsEnum.INSTANCE.getAnalisisService()));
 
         // Excepciones
         exception(IllegalArgumentException.class, (exception, request, response) -> {

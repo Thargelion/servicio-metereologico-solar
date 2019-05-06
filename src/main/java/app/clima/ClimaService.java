@@ -5,9 +5,15 @@ import app.enums.CrudServiceEnum;
 import app.planeta.Planeta;
 import app.services.CrudService;
 import app.enums.DaoEnum;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
 import lib.math.utils.Trigonometry;
+import org.bson.conversions.Bson;
 
+import java.util.Collection;
 import java.util.List;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class ClimaService implements CrudService<Clima> {
 
@@ -25,12 +31,10 @@ public class ClimaService implements CrudService<Clima> {
 
     @Override
     public void update(Clima object) {
-
     }
 
     @Override
     public void delete(Clima object) {
-
     }
 
     @Override
@@ -40,6 +44,19 @@ public class ClimaService implements CrudService<Clima> {
 
     public void cache(Clima clima) {
         climaDao.cache(clima);
+    }
+
+    public Integer countByTiempo(String tiempo) {
+        MongoCollection<Clima> climas = climaDao.all();
+        return (int)climas.countDocuments(eq("clima", tiempo));
+    }
+
+    public Integer getMaxSize() {
+        return climaDao.max().getDia();
+    }
+
+    public FindIterable<Clima> filter(Bson filtro) {
+        return climaDao.filter(filtro);
     }
 
     public void generateClimas(int startingPoint, int endingPoint) {
