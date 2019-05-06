@@ -6,6 +6,6 @@ public class ClimaDaoTest {
     @Test()
     void createClimaTest() {
         ClimaDao climaDao = new ClimaDao();
-        climaDao.save(new Clima(10, "pato"));
+        climaDao.save(new Clima(10, "pato", 0.0));
     }
 }

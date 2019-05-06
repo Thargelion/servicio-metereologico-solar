@@ -28,4 +28,12 @@ public class Clima {
     public void setClima(String clima) {
         this.clima = clima;
     }
+
+    public double getIntensidad() {
+        return intensidad;
+    }
+
+    public void setIntensidad(double intensidad) {
+        this.intensidad = intensidad;
+    }
 }

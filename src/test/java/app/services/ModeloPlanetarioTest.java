@@ -2,9 +2,11 @@ package app.services;
 
 import app.enums.DaoEnum;
 import org.junit.jupiter.api.Test;
+import testutils.DbTestBase;
+
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class ModeloPlanetarioTest {
+public class ModeloPlanetarioTest extends DbTestBase {
 
     @Test()
     void unPlanetaGira() {

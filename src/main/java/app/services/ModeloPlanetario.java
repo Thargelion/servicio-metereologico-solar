@@ -14,7 +14,6 @@ public class ModeloPlanetario {
         point.Rotacion(planeta.getVelocidad() * dias);
         planeta.setPosicionX(point.getCoordX());
         planeta.setPosicionY(point.getCoordY());
-        planetaDao.save(planeta);
         return planeta;
     }
 }
