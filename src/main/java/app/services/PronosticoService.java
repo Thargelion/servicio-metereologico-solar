@@ -48,7 +48,18 @@ public class PronosticoService {
     }
 
     public static void generarClimas(int dias) {
+        Logger logger = LoggerFactory.getLogger(PronosticoService.class);
+        logger.info("Empezando a generar pronóstico");
         ClimaService climaService = (ClimaService)CrudServiceEnum.CLIMA_SERVICE.getCrudService();
         climaService.generateClimas(0, dias);
+        logger.info(String.format("Generados %s pronósticos", dias));
+    }
+
+    public static void generarClimas(int diaInicio, int diaFinal) {
+        Logger logger = LoggerFactory.getLogger(PronosticoService.class);
+        logger.info("Empezando a generar pronóstico");
+        ClimaService climaService = (ClimaService)CrudServiceEnum.CLIMA_SERVICE.getCrudService();
+        climaService.generateClimas(diaInicio, diaFinal);
+        logger.info(String.format("Generados %s pronósticos", diaFinal - diaInicio));
     }
 }

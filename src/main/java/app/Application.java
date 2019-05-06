@@ -37,6 +37,7 @@ public class Application {
         get(Paths.Api.RESET, ResetController.resetPlanets(new PlanetaService()));
         get(Paths.Api.PRONOSTICO, PronosticoController.get());
         get(Paths.Api.ANALISIS, AnalisisController.get(ToolsEnum.INSTANCE.getAnalisisService()));
+        get(Paths.Api.RESET_FULL, ResetController.resetAll(ToolsEnum.INSTANCE.toolsService()));
 
         // Excepciones
         exception(IllegalArgumentException.class, (exception, request, response) -> {

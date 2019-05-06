@@ -11,6 +11,7 @@ public class AnalisisService {
                 climaService.countByTiempo("sequia"),
                 climaService.countByTiempo("lluvia"),
                 climaService.getMaxSize(),
-                climaService.countByTiempo("optimo"));
+                climaService.countByTiempo("optimo")
+        );
     }
 }

@@ -44,7 +44,7 @@ public class ClimaDao {
     }
 
     public Clima max() {
-        return mongoCollection.find().sort(new BasicDBObject("intensidad", -1)).first();
+        return mongoCollection.find(eq("clima", "lluvia")).sort(new BasicDBObject("intensidad", -1)).first();
     }
 
     public Iterable<Clima> filter() {
