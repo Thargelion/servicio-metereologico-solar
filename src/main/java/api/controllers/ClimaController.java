@@ -1,4 +1,4 @@
 package api.controllers;
 
-public class ClimaController extends BaseController{
+public class ClimaController extends BaseController {
 }

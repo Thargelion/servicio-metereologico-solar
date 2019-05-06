@@ -23,7 +23,7 @@ public class Application {
         get("/", HomeController.index);
         // Clima
         get(Paths.Api.CLIMA_ID, ClimaController.get(CrudServiceEnum.CLIMA_SERVICE.getCrudService()));
-        get(Paths.Api.CLIMA, ClimaController.get(CrudServiceEnum.CLIMA_SERVICE.getCrudService()));
+        // get(Paths.Api.CLIMA, ClimaController.get(CrudServiceEnum.CLIMA_SERVICE.getCrudService()));
         // post(Paths.Api.CLIMA, ClimaController.post(CrudServiceEnum.CLIMA_SERVICE.getCrudService()));
 
         // Planeta
