@@ -10,7 +10,8 @@ public class PronosticoController {
         return (Request request, Response response) -> {
             String dias = request.params("dias");
             response.status(201);
-            PronosticoService.asyncGenerarPosicionesDePlanetas(Integer.parseInt(dias));
+            PronosticoService pronosticoService = new PronosticoService();
+            pronosticoService.asyncGenerarPosicionesDePlanetas(Integer.parseInt(dias));
             return String.format("%s días enviados a procesar", dias);
         };
     }

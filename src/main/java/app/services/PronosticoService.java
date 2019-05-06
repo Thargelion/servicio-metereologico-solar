@@ -1,15 +1,14 @@
 package app.services;
 
+import app.clima.ClimaService;
 import app.dia.Dia;
 import app.dia.DiaDao;
-import app.dia.DiaService;
 import app.enums.CrudServiceEnum;
 import app.planeta.Planeta;
 import app.planeta.PlanetaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class PronosticoService {
@@ -24,15 +23,15 @@ public class PronosticoService {
         }
     }
 
-    public static void asyncGenerarPronostico(int dias) {
+    public void asyncGenerarPronostico(int dias) {
         CompletableFuture.runAsync(() -> generarPosicionesDePlanetas(dias));
     }
 
-    public static void asyncGenerarPosicionesDePlanetas(int dias) {
+    public void asyncGenerarPosicionesDePlanetas(int dias) {
         CompletableFuture.runAsync(() -> generarPosicionesDePlanetas(dias));
     }
 
-    public static void generarPosicionesDePlanetas(int dias) {
+    public void generarPosicionesDePlanetas(int dias) {
         PlanetaService planetaService = (PlanetaService)CrudServiceEnum.PLANETA_SERVICE.getCrudService();
         CompletableFuture<Void> processVulcano = CompletableFuture.runAsync(
                 () -> generarDias(planetaService.read("vulcano"), dias, new DiaDao())
@@ -44,11 +43,12 @@ public class PronosticoService {
                 () -> generarDias(planetaService.read("ferengi"), dias, new DiaDao())
         );
         CompletableFuture.allOf(processVulcano, processBetasoide, processFerengi).thenRun(
-                PronosticoService::generarClimas
+                () -> generarClimas(dias)
         );
     }
 
-    public static void generarClimas() {
-        DiaService diaService = new DiaService();
+    public static void generarClimas(int dias) {
+        ClimaService climaService = (ClimaService)CrudServiceEnum.CLIMA_SERVICE.getCrudService();
+        climaService.generateClimas(0, dias);
     }
 }

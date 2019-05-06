@@ -38,13 +38,22 @@ public class ClimaService implements CrudService<Clima> {
         return null;
     }
 
-    public static void generateClimas(int startingPoint, int endingPoint) {
+    public void cache(Clima clima) {
+        climaDao.cache(clima);
+    }
+
+    public void generateClimas(int startingPoint, int endingPoint) {
         for (int i = startingPoint; i < endingPoint; i++) {
             generateClima(i);
         }
+        try {
+            climaDao.storeCache();
+        } finally {
+            climaDao.deleteCache();
+        }
     }
 
-    public static void generateClima(int dia) {
+    public void generateClima(int dia) {
         DiaService diaService = new DiaService();
         ClimaService climaService = (ClimaService) CrudServiceEnum.CLIMA_SERVICE.getCrudService();
         Planeta vulcano = diaService.getPlaneta(dia, "vulcano");
@@ -60,9 +69,9 @@ public class ClimaService implements CrudService<Clima> {
         double[][] coordenadasSistema = {{0, 0}, {vulcanoX, vulcanoY}, {ferengiX, ferengiY}, {betasoideX, betasoideY}};
         String climaAlineado = calcularAlineacion(coordenadasPlanetas, coordenadasSistema);
         if (climaAlineado != null) {
-            climaService.create(new Clima(dia, climaAlineado, 0));
+            climaService.cache(new Clima(dia, climaAlineado, 0));
         } else {
-            climaService.create(standardClimaBuilder(dia, vulcano, ferengi, betasoide));
+            climaService.cache(standardClimaBuilder(dia, vulcano, ferengi, betasoide));
         }
     }
 

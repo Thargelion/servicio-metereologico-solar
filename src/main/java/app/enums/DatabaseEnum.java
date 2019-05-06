@@ -4,6 +4,7 @@ import app.config.SettingsEnum;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import lib.mongo.MongoConnect;
+import redis.clients.jedis.Jedis;
 
 public enum DatabaseEnum {
     instance;
@@ -13,5 +14,8 @@ public enum DatabaseEnum {
         MongoConnect mongoConnect = new MongoConnect();
         MongoClient mongoClient = mongoConnect.getMongoClient();
         return mongoClient.getDatabase(SettingsEnum.MONGO_DATABASE.variable);
+    }
+    public Jedis jedisDatabase() {
+        return new Jedis("localhost");
     }
 }

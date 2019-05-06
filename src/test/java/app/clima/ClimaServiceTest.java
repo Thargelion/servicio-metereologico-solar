@@ -7,11 +7,13 @@ public class ClimaServiceTest extends DbTestBase {
 
     @Test()
     void generateClimaGeneratesClima() {
-        ClimaService.generateClima(0);
+        ClimaService climaService = new ClimaService();
+        climaService.generateClima(0);
     }
 
     @Test()
     void generateClimaGeneratesClimas() {
-        ClimaService.generateClimas(1, 4);
+        ClimaService climaService = new ClimaService();
+        climaService.generateClimas(1, 4);
     }
 }
