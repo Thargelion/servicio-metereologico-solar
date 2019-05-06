@@ -15,12 +15,14 @@ import app.enums.ToolsEnum;
 import app.planeta.PlanetaService;
 import lib.redis.RedisConnect;
 
+import java.util.Optional;
+
 
 public class Application {
 
     public static void main(String[] args) {
         // Configure Spark
-        port(Integer.parseInt(System.getProperty("port", "4567")));
+        port(Optional.ofNullable(System.getenv("PORT")).map(Integer::valueOf).orElse(4567));
         staticFiles.expireTime(600L);
         get("/", HomeController.index);
         // Clima
