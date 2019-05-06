@@ -38,10 +38,8 @@ public class ClimaDao {
     }
 
     void cache(Clima clima) {
-        redisConnect.startRedis();
         Gson gson = TypesConverterEnum.instance.getGson();
         jedis.lpush("climas", gson.toJson(clima));
-        redisConnect.stopRedis();
     }
 
     void deleteCache() {
@@ -49,7 +47,6 @@ public class ClimaDao {
     }
 
     void storeCache() {
-        redisConnect.startRedis();
         long size = jedis.llen("climas");
         int begin = 0;
         int end = 9;
@@ -62,7 +59,6 @@ public class ClimaDao {
             end = end + step;
         } while (end < size);
         logger.info("Cache almacenado !");
-        redisConnect.stopRedis();
     }
 
     void saveRangeCache(List<String> climaCache) {

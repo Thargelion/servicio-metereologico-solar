@@ -2,6 +2,7 @@ package testutils;
 
 import app.config.SettingsEnum;
 import app.enums.DaoEnum;
+import app.enums.DatabaseEnum;
 import app.planeta.Planeta;
 import app.services.PronosticoService;
 import lib.redis.RedisConnect;
@@ -13,11 +14,16 @@ public class DbTestBase {
     @BeforeAll()
     public static void ignite() {
         SettingsEnum.MONGO_DATABASE.variable = "vulcano-test";
+        RedisConnect redisConnect = DatabaseEnum.instance.redisConnect();
+        redisConnect.startRedis();
         PronosticoService.generarDias(new Planeta("vulcano", 0.0, 1000.0, 5.0), 5, DaoEnum.instance.getDiaDao());
         PronosticoService.generarDias(new Planeta("ferengi", 0.0, 500.0, -1.0), 5, DaoEnum.instance.getDiaDao());
         PronosticoService.generarDias(new Planeta("betasoide", 0.0, 2000.0, -3.0), 5, DaoEnum.instance.getDiaDao());
     }
 
+    @AfterAll()
     public static void end() {
+        RedisConnect redisConnect = DatabaseEnum.instance.redisConnect();
+        redisConnect.stopRedis();
     }
 }
