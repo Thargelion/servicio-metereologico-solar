@@ -17,8 +17,6 @@ import lib.redis.RedisConnect;
 public class Application {
 
     public static void main(String[] args) {
-        RedisConnect redisConnect = DatabaseEnum.instance.redisConnect();
-        redisConnect.startRedis();
         // Configure Spark
         port(Integer.parseInt(System.getProperty("port", "4567")));
         staticFiles.expireTime(600L);
@@ -52,8 +50,6 @@ public class Application {
     }
 
     public static void end() {
-        RedisConnect redisConnect = new RedisConnect();
-        redisConnect.stopRedis();
         stop();
     }
 
