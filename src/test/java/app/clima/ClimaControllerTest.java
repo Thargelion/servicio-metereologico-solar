@@ -1,7 +1,7 @@
 package app.clima;
 
 import org.junit.jupiter.api.Test;
-import spark.Request;
+ import spark.Request;
 import spark.Response;
 import spark.routematch.RouteMatch;
 import testutils.TestBase;
@@ -39,8 +39,8 @@ class ClimaControllerTest extends TestBase {
         // request = (HttpURLConnection)new URL("http", HOST, 4567, REQUEST).openConnection();
         URL url = new URL(REQUEST);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        Clima clima = new Clima(1, "lluvia");
-        String expectedResponse = "{\"dia\":1,\"clima\":\"lluvia\"}";
+        Clima clima = new Clima(-1, "lluvia", 0.0);
+        String expectedResponse = "{\"dia\":1,\"clima\":\"soleado\",\"intensidad\":191328.0}";
         ClimaDao climaDao = mock(ClimaDao.class);
         when(climaDao.read(anyInt())).thenReturn(clima);
         when(request.params(anyString())).thenReturn("1");

@@ -3,6 +3,7 @@ package lib.math.utils;
 import app.enums.MathUtilsEnum;
 import org.apache.commons.math3.analysis.function.Abs;
 import org.apache.commons.math3.geometry.euclidean.twod.Vector2D;
+import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.SingularValueDecomposition;
 
@@ -30,6 +31,14 @@ public class Trigonometry {
         return (triangulo1 + triangulo2 + triangulo3) <= trianguloBase;
     }
 
+    public static double crossProduct(double[] triPoint1, double[] triPoint2, double[] triPoint3) {
+        return crossProduct(
+                new Vector2D(triPoint1),
+                new Vector2D(triPoint2),
+                new Vector2D(triPoint3)
+        );
+    }
+
     public static double crossProduct(Vector2D vector1, Vector2D vector2, Vector2D vector3)  {
         return vector1.crossProduct(vector2, vector3);
     }
@@ -41,5 +50,10 @@ public class Trigonometry {
 
     public static boolean arePointsAligned(RealMatrix realMatrix) {
         return Trigonometry.rank(realMatrix) == 1;
+    }
+
+    public static boolean arePointsAligned(double[][] matrix) {
+        Array2DRowRealMatrix realMatrix = new Array2DRowRealMatrix(matrix);
+        return arePointsAligned(realMatrix);
     }
 }
