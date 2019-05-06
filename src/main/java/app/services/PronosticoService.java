@@ -2,8 +2,8 @@ package app.services;
 
 import app.dia.Dia;
 import app.dia.DiaDao;
+import app.dia.DiaService;
 import app.enums.CrudServiceEnum;
-import app.enums.DaoEnum;
 import app.planeta.Planeta;
 import app.planeta.PlanetaService;
 import org.slf4j.Logger;
@@ -49,6 +49,6 @@ public class PronosticoService {
     }
 
     public static void generarClimas() {
-
+        DiaService diaService = new DiaService();
     }
 }

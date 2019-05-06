@@ -39,7 +39,7 @@ class ClimaControllerTest extends TestBase {
         // request = (HttpURLConnection)new URL("http", HOST, 4567, REQUEST).openConnection();
         URL url = new URL(REQUEST);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        Clima clima = new Clima(1, "lluvia");
+        Clima clima = new Clima(1, "lluvia", 0.0);
         String expectedResponse = "{\"dia\":1,\"clima\":\"lluvia\"}";
         ClimaDao climaDao = mock(ClimaDao.class);
         when(climaDao.read(anyInt())).thenReturn(clima);

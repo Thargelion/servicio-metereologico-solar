@@ -1,8 +1,15 @@
 package app.clima;
 
+import app.dia.Dia;
+import app.dia.DiaService;
+import app.enums.CrudServiceEnum;
+import app.planeta.Planeta;
 import app.services.CrudService;
 import app.enums.DaoEnum;
+import lib.math.geometry.Point;
+import lib.math.utils.Trigonometry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClimaService implements CrudService<Clima> {
@@ -34,7 +41,66 @@ public class ClimaService implements CrudService<Clima> {
         return null;
     }
 
-    public static void generateClimas() {
+    public static void generateClimas(int startingPoint, int endingPoint) {
+        for (int i = startingPoint; i < endingPoint; i++) {
 
+        }
+    }
+
+    public static void generateClima(int dia) {
+        DiaService diaService = new DiaService();
+        ClimaService climaService = (ClimaService) CrudServiceEnum.CLIMA_SERVICE.getCrudService();
+        List<Point> points = new ArrayList<>();
+        Planeta vulcano = diaService.getPlaneta(dia, "vulcano");
+        Planeta ferengi = diaService.getPlaneta(dia, "ferengi");
+        Planeta betasoide = diaService.getPlaneta(dia, "betasoide");
+        double vulcanoX = vulcano.getPosicionX();
+        double vulcanoY = vulcano.getPosicionX();
+        double ferengiX = ferengi.getPosicionX();
+        double ferengiY = ferengi.getPosicionX();
+        double betasoideX = betasoide.getPosicionX();
+        double betasoideY = betasoide.getPosicionX();
+        double[][] coordenadasPlanetas = {{vulcanoX, vulcanoY}, {ferengiX, ferengiY}, {betasoideX, betasoideY}};
+        double[][] coordenadasSistema = {{0, 0}, {vulcanoX, vulcanoY}, {ferengiX, ferengiY}, {betasoideX, betasoideY}};
+        String climaAlineado = calcularAlineacion(coordenadasPlanetas, coordenadasSistema);
+        if (climaAlineado != null) {
+            climaService.create(new Clima(dia, climaAlineado, 0));
+        } else {
+            climaService.create(standardClimaBuilder(dia, vulcano, ferengi, betasoide));
+        }
+    }
+
+    private static Clima standardClimaBuilder(int dia, Planeta vulcano, Planeta ferengi, Planeta betasoide) {
+        double[] coordsVulcano = {vulcano.getPosicionX(), vulcano.getPosicionY()};
+        double[] coordsFerengi = {ferengi.getPosicionX(), ferengi.getPosicionY()};
+        double[] coordsBetasoide = {betasoide.getPosicionX(), betasoide.getPosicionY()};
+        String tiempo = analizarClima(coordsVulcano, coordsFerengi, coordsBetasoide);
+        double intensidad = Trigonometry.crossProduct(coordsVulcano, coordsFerengi, coordsBetasoide);
+        return new Clima(dia, tiempo, intensidad);
+    }
+
+    private static String analizarClima(double[] coordsVulcano, double[] coordsFerengi, double[] cordsBetasoide) {
+        double[] coordsSol = {0, 0};
+        if (Trigonometry.isPointInTri(coordsSol, coordsVulcano, coordsFerengi, cordsBetasoide)) {
+            return "lluvia";
+        } else {
+            return "soleado";
+        }
+    }
+
+    private static String calcularAlineacion(double[][] coordenadasPlanetas, double[][] coordenadasSistema) {
+        if (Trigonometry.arePointsAligned(coordenadasPlanetas)) {
+            return analizarAlineacion(coordenadasSistema);
+        } else {
+            return null;
+        }
+    }
+
+    private static String analizarAlineacion(double[][] coordenadasSistema) {
+        if (Trigonometry.arePointsAligned(coordenadasSistema)) {
+            return "sequia";
+        } else {
+            return "optimo";
+        }
     }
 }
