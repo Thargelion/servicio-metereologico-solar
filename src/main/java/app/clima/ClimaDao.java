@@ -4,17 +4,19 @@ import api.types.TypesEnum;
 import app.enums.DatabaseEnum;
 import app.enums.TypesConverterEnum;
 import com.google.gson.Gson;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.ReplaceOptions;
 import lib.mongo.ReplaceOptionsEnum;
 import lib.redis.RedisConnect;
+import org.bson.BsonDocument;
 import org.bson.conversions.Bson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +37,18 @@ public class ClimaDao {
 
     Clima read(Integer id) {
         return mongoCollection.find(eq("dia", id)).first();
+    }
+
+    public FindIterable<Clima> filter(Bson filtro) {
+        return mongoCollection.find(filtro);
+    }
+
+    public Clima max() {
+        return mongoCollection.find(eq("clima", "lluvia")).sort(new BasicDBObject("intensidad", -1)).first();
+    }
+
+    public Iterable<Clima> filter() {
+        return mongoCollection.find();
     }
 
     void cache(Clima clima) {
@@ -75,6 +89,10 @@ public class ClimaDao {
         Bson filtro = eq("dia", clima.getDia());
         ReplaceOptions replaceOptions = ReplaceOptionsEnum.UPSERT.getReplaceOptions();
         mongoCollection.replaceOne(filtro, clima, replaceOptions);
+    }
+
+    MongoCollection<Clima> all() {
+        return mongoCollection;
     }
 
     void create(Clima clima) {

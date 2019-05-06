@@ -10,8 +10,10 @@ Pronóstico del clima en Vulcano para la próxima década.
 | /clima/:id | GET | Datos del clima para el dia :id|
 | /planeta | GET      |   Ver listado de planetas |
 | /planeta/:id | GET | Ver planeta |
-| /reset | GET | Devolver a los planetas a la posición inicial |
 | /pronostico/:dias | GET | Calcular el pronóstico para los fututos :dias dias |
+| /analisis | GET | Analiza los datos para responder por días de lluvia, óptimos, etc. |
+| /reset | GET | Devolver a los planetas a la posición inicial |
+| /reset_full | GET | Tira todo y devuelve a los planetas a la posición inicial |
 
 ## Deploy local:
 
