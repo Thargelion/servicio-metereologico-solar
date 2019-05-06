@@ -9,7 +9,9 @@ import api.controllers.*;
 import api.responses.GenericErrorResponse;
 import api.types.TypesEnum;
 import app.enums.CrudServiceEnum;
+import app.enums.DatabaseEnum;
 import app.planeta.PlanetaService;
+import lib.redis.RedisConnect;
 
 
 public class Application {
@@ -48,6 +50,8 @@ public class Application {
     }
 
     public static void end() {
+        RedisConnect redisConnect = new RedisConnect();
+        redisConnect.stopRedis();
         stop();
     }
 

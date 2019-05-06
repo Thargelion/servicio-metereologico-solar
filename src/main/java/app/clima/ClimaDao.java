@@ -8,11 +8,13 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.ReplaceOptions;
 import lib.mongo.ReplaceOptionsEnum;
+import lib.redis.RedisConnect;
 import org.bson.conversions.Bson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class ClimaDao {
     Jedis jedis = DatabaseEnum.instance.jedisDatabase();
     MongoCollection<Clima> mongoCollection;
     Logger logger = LoggerFactory.getLogger(ClimaDao.class);
+    RedisConnect redisConnect = DatabaseEnum.instance.redisConnect();
 
     public ClimaDao() {
         mongoCollection = mongoDatabase.getCollection("climas", Clima.class);
@@ -35,8 +38,10 @@ public class ClimaDao {
     }
 
     void cache(Clima clima) {
+        redisConnect.startRedis();
         Gson gson = TypesConverterEnum.instance.getGson();
         jedis.lpush("climas", gson.toJson(clima));
+        redisConnect.stopRedis();
     }
 
     void deleteCache() {
@@ -44,6 +49,7 @@ public class ClimaDao {
     }
 
     void storeCache() {
+        redisConnect.startRedis();
         long size = jedis.llen("climas");
         int begin = 0;
         int end = 9;
@@ -56,6 +62,7 @@ public class ClimaDao {
             end = end + step;
         } while (end < size);
         logger.info("Cache almacenado !");
+        redisConnect.stopRedis();
     }
 
     void saveRangeCache(List<String> climaCache) {
