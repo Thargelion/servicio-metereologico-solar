@@ -41,6 +41,12 @@ public class Application {
         get(Paths.Api.ANALISIS, AnalisisController.get(ToolsEnum.INSTANCE.getAnalisisService()));
         get(Paths.Api.RESET_FULL, ResetController.resetAll(ToolsEnum.INSTANCE.toolsService()));
 
+        // Database
+        path(Paths.Api.DATABASE, () -> {
+            delete(Paths.Api.DIAS, ResetController.resetDiasCollection(ToolsEnum.INSTANCE.toolsService()));
+            delete(Paths.Api.CLIMA, ResetController.resetClimasCollection(ToolsEnum.INSTANCE.toolsService()));
+        });
+
         // Excepciones
         exception(IllegalArgumentException.class, (exception, request, response) -> {
             response.status(400);

@@ -1,6 +1,7 @@
 package lib.math.utils;
 
 import app.enums.MathUtilsEnum;
+import lib.math.geometry.Punto;
 import org.apache.commons.math3.analysis.function.Abs;
 import org.apache.commons.math3.geometry.euclidean.twod.Vector2D;
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
@@ -39,13 +40,32 @@ public class Trigonometry {
         );
     }
 
-    public static double crossProduct(Vector2D vector1, Vector2D vector2, Vector2D vector3)  {
+    public static double crossProduct(Vector2D vector1, Vector2D vector2, Vector2D vector3) {
         return vector1.crossProduct(vector2, vector3);
     }
 
     public static double rank(RealMatrix realMatrix) {
         SingularValueDecomposition singularMatrix = new SingularValueDecomposition(realMatrix);
         return singularMatrix.getRank();
+    }
+
+    public static boolean arePointsAligned(Punto punto1, Punto punto2, Punto punto3) {
+        double[] coordsX = {punto1.getCoordX(), punto2.getCoordX(), punto3.getCoordX()};
+        double[] coordsY = {punto1.getCoordY(), punto2.getCoordY(), punto3.getCoordY()};
+        if (checkEquality(coordsX) || checkEquality(coordsY)) {
+            return true;
+        }
+        double firstDivision = (punto2.getCoordX() - punto1.getCoordX()) / (punto3.getCoordX() - punto2.getCoordX());
+        double secondDivision = (punto2.getCoordY() - punto1.getCoordY()) / (punto3.getCoordY() - punto2.getCoordY());
+        return secondDivision == firstDivision;
+    }
+
+    public static boolean checkEquality(double[] numbers) {
+        double total = 0;
+        for (double number : numbers) {
+            total += MathUtilsEnum.instance.getAbs().value(number);
+        }
+        return MathUtilsEnum.instance.getAbs().value(numbers[0]) == (total / numbers.length);
     }
 
     public static boolean arePointsAligned(RealMatrix realMatrix) {

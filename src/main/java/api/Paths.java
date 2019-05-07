@@ -11,5 +11,7 @@ public class Paths {
         public static final String PRONOSTICO = "/pronostico/:dias";
         public static final String PRONOSTICO_PERIODO = "/pronostico/:diaInicio/:diaFinal";
         public static final String ANALISIS = "/analisis";
+        public static final String DATABASE = "/database";
+        public static final String DIAS = "/dias";
     }
 }

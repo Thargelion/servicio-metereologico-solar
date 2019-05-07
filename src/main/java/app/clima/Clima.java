@@ -1,5 +1,7 @@
 package app.clima;
 
+import app.enums.EstadosEnum;
+
 public class Clima {
     private Integer dia;
     private String clima;
@@ -10,6 +12,12 @@ public class Clima {
     public Clima(Integer dia, String clima, double intensidad) {
         this.dia = dia;
         this.clima = clima;
+        this.intensidad =intensidad;
+    }
+
+    public Clima(Integer dia, EstadosEnum estado, double intensidad) {
+        this.dia = dia;
+        this.clima = estado.getEstado();
         this.intensidad =intensidad;
     }
 

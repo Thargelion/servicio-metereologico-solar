@@ -2,15 +2,15 @@ package lib.math.geometry;
 
 import static java.lang.Math.round;
 
-public class Point implements Movimiento {
+public class Punto implements Movimiento {
 
     private double coordX;
     private double coordY;
 
-    public Point() {
+    public Punto() {
     }
 
-    public Point(double coordX, double coordY) {
+    public Punto(double coordX, double coordY) {
         this.coordX = coordX;
         this.coordY = coordY;
     }

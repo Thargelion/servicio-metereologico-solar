@@ -18,4 +18,8 @@ public class ToolsService {
         climas.drop();
         planetaService.resetPlanets();
     }
+
+    public void drop(MongoCollection collection) {
+        collection.drop();
+    }
 }
