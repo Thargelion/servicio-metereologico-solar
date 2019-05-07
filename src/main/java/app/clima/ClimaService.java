@@ -10,6 +10,7 @@ import com.mongodb.client.MongoCollection;
 import lib.math.geometry.Punto;
 import lib.math.utils.Trigonometry;
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+
 import java.util.List;
 
 import static com.mongodb.client.model.Filters.eq;
@@ -80,9 +81,17 @@ public class ClimaService implements CrudService<Clima> {
     private static EstadosEnum calcularAlineacion(Punto vulcano, Punto ferengi, Punto betasoide) {
         double[][] matriz = {{0, 0}, vulcano.getCoords(), ferengi.getCoords(), betasoide.getCoords()};
         if (Trigonometry.arePointsAligned(vulcano, ferengi, betasoide)) {
-            return analizarAlineacion(matriz);
+            return analizarAlineacion(new Punto(0, 0), vulcano, ferengi);
         } else {
             return null;
+        }
+    }
+
+    private static EstadosEnum analizarAlineacion(Punto planeta1, Punto planeta2, Punto planeta3) {
+        if (Trigonometry.arePointsAligned(planeta1, planeta2, planeta3)) {
+            return EstadosEnum.SEQUIA;
+        } else {
+            return EstadosEnum.OPTIMO;
         }
     }
 
