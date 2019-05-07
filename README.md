@@ -14,6 +14,8 @@ Pronóstico del clima en Vulcano para la próxima década.
 | /analisis | GET | Analiza los datos para responder por días de lluvia, óptimos, etc. |
 | /reset | GET | Devolver a los planetas a la posición inicial |
 | /reset_full | GET | Tira todo y devuelve a los planetas a la posición inicial |
+| /database/dias | DELETE | Drop collection dias |
+| /database/clima | DELETE | Drop collection  climas |
 
 ## Deploy local:
 
@@ -79,3 +81,5 @@ Finalmente, para calcular cuál es el día de mayor nivel de lluvia se buscó qu
 - [slf4j](https://www.slf4j.org/)
 
 - [Travis](https://travis-ci.com/)
+
+- [Heroku](https://www.heroku.com)
