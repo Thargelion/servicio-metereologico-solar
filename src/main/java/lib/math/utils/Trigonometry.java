@@ -63,9 +63,9 @@ public class Trigonometry {
     public static boolean checkEquality(double[] numbers) {
         double total = 0;
         for (double number : numbers) {
-            total += MathUtilsEnum.instance.getAbs().value(number);
+            total += number;
         }
-        return MathUtilsEnum.instance.getAbs().value(numbers[0]) == (total / numbers.length);
+        return MathUtilsEnum.instance.getAbs().value(numbers[0]) == (MathUtilsEnum.instance.getAbs().value(total) / numbers.length);
     }
 
     public static boolean arePointsAligned(RealMatrix realMatrix) {
